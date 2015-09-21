@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html data-require="math graphie graphie-helpers-arithmetic">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>從展開圖算表面積</title>
+    <script src="../khan-exercise.js"></script>
+    <style type="text/css">
+        #answer_area .short input[type=text] {
+            width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="exercise">
+	<div class="problems">
+		<div id="case1">
+			<div class="vars">
+				<var id="A, B, C, D, E"> randFromArray( [ [ 6, 5, 4, 3, 2 ], [ 7, 6, 5, 4, 3 ], [ 8, 7, 6, 4, 3 ] ] ) </var>
+			</div>
+                
+			<div class="question">
+				<div class="problem">
+					<p>下面有一個複合形體及它的展開圖。請問前方紅色 <code class="hint_red">L</code> 圖形的的周長是否等於展開圖中藍色長方形的長邊長度 <code>(<var>A</var>+<var>B</var>+<var>D</var>+<var>D</var>+<var>D</var>+<var>E</var>)</code> ？</p>
+					<p onclick="$('#option_1').prop('checked', true)"><input id="option_1" type="radio" name="count_numbers_1" value="0" />&nbsp;是</p>
+					<p onclick="$('#option_2').prop('checked', true)"><input id="option_2" type="radio" name="count_numbers_1" value="1" />&nbsp;否</p>
+					<div class="graphie">
+						init( { range : [ [ -10, 10 ], [ -7.5, ( -6 + A + C * 0.86 ) + 1.5 ] ], scale : 20 } );
+						path( [ [ -8, -6 + A ], [ -8 + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E, -6 + A ], [ -8, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + E, -6 + A - D ], [ -8 + E, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A - D ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 -D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B, -6 + A - D ], [ -8 + E, -6 + A - D ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + B, -6 + A - D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B + 0.5 * C, -6 + C * 0.86 ], [ -8 + B, -6 ] ], [ -8 + B, -6 + A - D ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8, -6 ], [ -8, -6 + A ], [ -8 + E, -6 + A ], [ -8 + E, -6 + A - D ], [ -8 + B, -6 + A - D ], [ -8 + B, -6 ], [ -8, -6 ] ], { fill : "red", opacity : 0.65, stroke : "red" } );
+						label( [ -8 + B/2, -6.5 ], B );
+						label( [ -8.5, -6 + A / 2 ], A );
+						label( [ -8.5 + C / 4, -5.5 + A + 0.43 * C ], C );
+						label( [ -8 + C / 2 + E / 2, ( -6 + A + C * 0.86 ) + 0.5 ], E );
+						label( [ -8 + E + 0.5 * C + 0.5, ( -6 + A + C * 0.86 ) - D / 2 ], D );
+					</div>
+					<div class="graphie">
+						init( { range : [ [ -10, 24 ], [ -17 - C - A - 1, -17 + A + E / 2 + 1 ] ], scale : 15 } );
+						path( [ [ -8, -17 ], [ -8 + A + B + 3 * D + E, -17 ], [ -8 + A + B + 3 * D + E, -17 - C ], [ -8, -17 - C ], [ -8, -17 ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						line( [ -8 + A, -17 ], [ -8 + A, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B, -17 ], [ -8 + A + B, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + D, -17 ], [ -8 + A + B + D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 2 * D, -17 ], [ -8 + A + B + 2 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 3 * D, -17 ], [ -8 + A + B + 3 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						label( [ -8 + A, -17 + A / 2 ], A, 'left' );
+						label( [ -8 + A + E / 2, -17 + A ], E, 'above' );
+						label( [ -8 + A + E, -17 + A - D / 2 ], D, 'right' );
+						label( [ -8 + A / 2, -17 - 0.8 ], A );
+						label( [ -8 + A + B / 2, -17 - 0.8 ], B );
+						label( [ -8 + A + B + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D + E / 2, -17 - 0.8 ], E );
+						label( [ -8 + A + B + 3 * D + E + 0.8, -17 - C / 2 ], C );
+						path( [ [ -8 + A, -17 ], [ -8 + A, -17 + A ], [ -8 + A + E, -17 + A ], [ -8 + A + E, -17 + A - D ], [ -8 + A + B, -17 + A - D ], [ -8 + A + B, -17 ] ], { stroke : "red", fill : "red", opacity : 0.65 } );
+						path( [ [ -8 + A, -17 - C ], [ -8 + A, -17 - C - A ], [ -8 + A + E, -17 - C - A ], [ -8 + A + E, -17 - C - A + D ], [ -8 + A + B, -17 - C - A + D ], [ -8 + A + B, -17 - C ], [ -8 + A, -17 - C ] ], { stroke : "red", fill : "red", opacity : 0.4 } );
+					</div>
+				</div>
+			</div>	
+					
+            <div class="solution" data-type="multiple">
+				<p>請選擇正確的答案</p>
+				<div class="sol" data-type="custom">
+					<div class="guess">$('input:radio[name="count_numbers_1"]:checked').val()</div>
+		            <div class="validator-function">
+		            	if(guess == null){
+	                		return "";
+	                	}
+	                	return guess == 0;
+		            </div>
+	            </div>
+			</div>
+
+            <div class="hints">
+				<div>
+					<p>紅色 <code class="hint_red">L</code> 圖形的周長即為 </p>
+					<p><code>\qquad (<var>A</var>+<var>B</var>+<var>D</var>+<var>D</var>+<var>D</var>+<var>E</var>)</code>，</p>
+					<p>答案選擇<span class="hint_pink">是</span>。</p>
+				</div>
+            </div>
+        </div>
+		
+		<div id="case2">
+			<div class="vars">
+				<var id="A, B, C, D, E"> randFromArray( [ [ 6, 5, 4, 3, 2 ], [ 7, 6, 5, 4, 3 ], [ 8, 7, 6, 4, 3 ] ] ) </var>	
+			</div>
+                
+			<div class="question">
+				<div class="problem">
+					<p>下面有一個複合形體及它的展開圖。請問展開圖中長方形的短邊長度為何？</p>
+					<div class="graphie">
+						init( { range : [ [ -10, 10 ], [ -7.5, ( -6 + A + C * 0.86 ) + 1.5 ] ], scale : 20 } );
+						path( [ [ -8, -6 + A ], [ -8 + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E, -6 + A ], [ -8, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + E, -6 + A - D ], [ -8 + E, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A - D ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B, -6 + A - D ], [ -8 + E, -6 + A - D ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + B, -6 + A - D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B + 0.5 * C, -6 + C * 0.86 ], [ -8 + B, -6 ] ], [ -8 + B, -6 + A - D ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8, -6 ], [ -8, -6 + A ], [ -8 + E, -6 + A ], [ -8 + E, -6 + A - D ], [ -8 + B, -6 + A - D ], [ -8 + B, -6 ], [ -8, -6 ] ], { fill : "red", opacity : 0.65, stroke: "red" } );
+						label( [ -8 + B / 2, -6.5 ], B );
+						label( [ -8.5, -6 + A / 2 ], A );
+						label( [ -8.5 + C / 4, -5.5 + A + 0.43 * C ], C );
+						label( [ -8 + C / 2 + E / 2, ( -6 + A + C * 0.86 ) + 0.5 ], E );
+						label( [ -8 + E + 0.5 * C + 0.5, ( -6 + A + C * 0.86 ) - D / 2 ], D );	
+					</div>
+					<div class="graphie">
+						init( { range : [ [ -10, 24 ], [ -17 - C - A - 1, -17 + A + E / 2 + 1 ] ], scale : 15 } );
+						path( [ [ -8, -17 ], [ -8 + A + B + 3 * D + E, -17 ], [ -8 + A + B + 3 * D + E, -17 - C ], [ -8, -17 - C ], [ -8, -17 ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						line( [ -8 + A, -17 ], [ -8 + A, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B, -17 ], [ -8 + A + B, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + D, -17 ], [ -8 + A + B + D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 2 * D, -17 ], [ -8 + A + B + 2 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 3 * D, -17 ], [ -8 + A + B + 3 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						label( [ -8 + A, -17 + A / 2 ], A, 'left' );
+						label( [ -8 + A + E / 2, -17 + A ], E, 'above' );
+						label( [ -8 + A + E, -17 + A - D / 2 ], D, 'right' );
+						label( [ -8 + A / 2, -17 - 0.8 ], A );
+						label( [ -8 + A + B / 2, -17 - 0.8 ], B );
+						label( [ -8 + A + B + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D + E / 2, -17 - 0.8 ], E );
+						line( [ -8 + A + B + 3 * D + E, -17 ], [ -8 + A + B + 3 * D + E, -17 - C ], { stroke : "blue" } );
+						label( [ -8 + A + B + 3 * D + E + 0.5, -17 - C / 2 ], '\\Huge{？}', "right", { color : "blue" } );
+						path( [ [ -8 + A, -17 ], [ -8 + A, -17 + A ], [ -8 + A + E, -17 + A ], [ -8 + A + E, -17 + A - D ], [ -8 + A + B, -17 + A - D ], [ -8 + A + B, -17 ] ], { stroke : "red", fill : "red", opacity : 0.65 } );
+						path( [ [ -8 + A, -17 - C ], [ -8 + A, -17 - C - A ], [ -8 + A + E, -17 - C - A ], [ -8 + A + E, -17 - C - A + D ], [ -8 + A + B, -17 - C - A + D ], [ -8 + A + B, -17 - C ], [ -8 + A, -17 - C ] ], { stroke : "red", fill : "red", opacity : 0.4 } );
+					</div>
+				</div>
+			</div>	
+					
+            <div class="solution" data-type="multiple">
+				<span class="sol" data-forms="integer"><var>C</var></span>
+			</div>			
+           
+		   <div class="hints">
+				<p> 展開圖的短邊即為上方複合形體的厚度，故為 <code class="hint_pink"><var>C</var></code> 。</p>
+            </div>
+        </div>
+		
+		
+		<div id="case3">
+			<div class="vars">
+				<var id="A, B, C, D, E"> randFromArray( [ [ 6, 5, 4, 3, 2 ], [ 7, 6, 5, 4, 3 ], [ 8, 7, 6, 4, 3 ] ]) </var>
+				<var id="F"> A + B + 3 * D + E </var>
+				<var id="G"> F * C </var>
+				<var id="H"> A * B - D * ( B - E ) </var>
+				<var id="ANSWER"> H * 2 + G </var>
+			</div>
+                
+			<div class="question">
+				<div class="problem">
+					<p>下面有一個複合形體及它的展開圖。請協助小明完成複合圖形表面積的計算。</p>
+					<div class="graphie">
+						init( { range : [ [ -10, 10 ], [ -7.5, ( -6 + A + C * 0.86 ) + 1.5 ] ], scale : 20 } );
+						path( [ [ -8, -6 + A ], [ -8 + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E, -6 + A ], [ -8, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + E, -6 + A - D ], [ -8 + E, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A - D ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 -D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B, -6 + A - D ], [ -8 + E, -6 + A - D ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + B, -6 + A - D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B + 0.5 * C, -6 + C * 0.86 ], [ -8 + B, -6 ] ], [ -8 + B, -6 + A - D ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8, -6 ], [ -8, -6 + A ], [ -8 + E, -6 + A ], [ -8 + E, -6 + A - D ], [ -8 + B, -6 + A - D ], [ -8 + B, -6 ], [ -8, -6 ] ], { fill : "red", opacity : 0.65, stroke : "red" } );
+						label( [ -8 + B/2, -6.5 ], B );
+						label( [ -8.5, -6 + A / 2 ], A );
+						label( [ -8.5 + C / 4, -5.5 + A + 0.43 * C ], C );
+						label( [ -8 + C / 2 + E / 2, ( -6 + A + C * 0.86 ) + 0.5 ], E );
+						label( [ -8 + E + 0.5 * C + 0.5, ( -6 + A + C * 0.86 ) - D / 2 ], D );
+					</div>
+					<div class="graphie">
+						init( { range : [ [ -10, 24 ], [ -17 - C - A - 1, -17 + A + E / 2 + 1 ] ], scale : 15 } );
+						path( [ [ -8, -17 ], [ -8 + A + B + 3 * D + E, -17 ], [ -8 + A + B + 3 * D + E, -17 - C ], [ -8, -17 - C ], [ -8, -17 ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						line( [ -8 + A, -17 ], [ -8 + A, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B, -17 ], [ -8 + A + B, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + D, -17 ], [ -8 + A + B + D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 2 * D, -17 ], [ -8 + A + B + 2 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 3 * D, -17 ], [ -8 + A + B + 3 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						label( [ -8 + A, -17 + A / 2 ], A, 'left' );
+						label( [ -8 + A + E / 2, -17 + A ], E, 'above' );
+						label( [ -8 + A + E, -17 + A - D / 2 ], D, 'right' );
+						label( [ -8 + A / 2, -17 - 0.8 ], A );
+						label( [ -8 + A + B / 2, -17 - 0.8 ], B );
+						label( [ -8 + A + B + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D + E / 2, -17 - 0.8 ], E );
+						label( [ -8 + A + B + 3 * D + E + 0.8, -17 - C / 2 ], C );
+						path( [ [ -8 + A, -17 ], [ -8 + A, -17 + A ], [ -8 + A + E, -17 + A ], [ -8 + A + E, -17 + A - D ], [ -8 + A + B, -17 + A - D ], [ -8 + A + B, -17 ] ], { stroke : "red", fill : "red", opacity : 0.65 } );
+						path( [ [ -8 + A, -17 - C ], [ -8 + A, -17 - C - A ], [ -8 + A + E, -17 - C - A ], [ -8 + A + E, -17 - C - A + D ], [ -8 + A + B, -17 - C - A + D ], [ -8 + A + B, -17 - C ], [ -8 + A, -17 - C ] ], { stroke : "red", fill : "red", opacity : 0.4 } );
+					</div>
+					<p>第一步:在展開圖中，圖形可分為兩個 <code>L</code> 型和一個長方形</p>
+					<p>第二步: 一個 <code>L</code> 型的面積為 <code>( \qquad )</code></p>
+					<p>第三步:長方形的面積為 <code>(<var>A</var>+<var>B</var>+<var>D</var>+<var>D</var>+<var>D</var>+<var>E</var>)\times<var>C</var>=<var>F</var>\times<var>C</var>=<var>G</var></code></p>
+					<p>第四步:複合形體的表面積為 <code>( \qquad ) \times 2 + <var>G</var></code></p>
+				</div>
+			</div>	
+					
+           <div class="solution" data-type="multiple">
+			<span class="sol" data-forms="integer"><var>ANSWER</var></span>
+		</div>			
+           
+		   <div class="hints">
+				<p><code>L</code> 型的表面積為 <code><var>A</var> \times <var>B</var>-<var>D</var> \times <var>B - E</var> = <var>H</var></code></p>
+				<p>複合形體的表面積為 <code><var>H</var>\times 2+<var>G</var> = \color{#FF00AF}{<var>ANSWER</var>}</code> </p>
+            </div>
+        </div>
+		
+		<div id="case4">
+			<div class="vars">
+				<var id="A,B,C,D,E"> randFromArray( [ [ 6, 5, 4, 3, 2 ], [ 7, 6, 5, 4, 3 ], [ 8, 7, 6, 4, 3 ] ] ) </var>
+				<var id="F"> A + B + 3 * D + E </var>
+				<var id="G"> F * C </var>
+				<var id="H"> A * B - D * ( B - E ) </var>
+				<var id="ANSWER"> H * 2 + G </var>
+				
+			</div>
+                
+			<div class="question">
+				<div class="problem">
+					<p>下面有一個複合形體及它的展開圖。請協助小明完成複合圖形表面積的計算。</p>
+					<div class="graphie">
+						init( { range : [ [ -10, 10 ], [ -7.5, ( -6 + A + C * 0.86 ) + 1.5 ] ], scale : 20 } );
+						path( [ [ -8, -6 + A ], [ -8 + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E, -6 + A ], [ -8, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + E, -6 + A - D ], [ -8 + E, -6 + A ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + E, -6 + A - D ], [ -8 + E + 0.5 * C, -6 + A + C * 0.86 -D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B, -6 + A - D ], [ -8 + E, -6 + A - D ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8 + B, -6 + A - D ], [ -8 + B + 0.5 * C, -6 + A + C * 0.86 - D ], [ -8 + B + 0.5 * C, -6 + C * 0.86 ], [ -8 + B, -6 ] ], [ -8 + B, -6 + A - D ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						path( [ [ -8, -6 ], [ -8, -6 + A ], [ -8 + E, -6 + A ], [ -8 + E, -6 + A - D ], [ -8 + B, -6 + A - D ], [ -8 + B, -6 ], [ -8, -6 ] ], { fill : "red", opacity : 0.65, stroke : "red" } );
+						label( [ -8 + B/2, -6.5 ], B );
+						label( [ -8.5, -6 + A / 2 ], A );
+						label( [ -8.5 + C / 4, -5.5 + A + 0.43 * C ], C );
+						label( [ -8 + C / 2 + E / 2, ( -6 + A + C * 0.86 ) + 0.5 ], E );
+						label( [ -8 + E + 0.5 * C + 0.5, ( -6 + A + C * 0.86 ) - D / 2 ], D );
+					</div>
+					<div class="graphie">
+						init( { range : [ [ -10, 24 ], [ -17 - C - A - 1, -17 + A + E / 2 + 1 ] ], scale : 15 } );
+						path( [ [ -8, -17 ], [ -8 + A + B + 3 * D + E, -17 ], [ -8 + A + B + 3 * D + E, -17 - C ], [ -8, -17 - C ], [ -8, -17 ] ], { fill : "#D8D8EB", stroke : "#B8B8DC" } );
+						line( [ -8 + A, -17 ], [ -8 + A, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B, -17 ], [ -8 + A + B, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + D, -17 ], [ -8 + A + B + D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 2 * D, -17 ], [ -8 + A + B + 2 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						line( [ -8 + A + B + 3 * D, -17 ], [ -8 + A + B + 3 * D, -17 - C ], { "stroke-dasharray" : "-", stroke : "#B8B8DC" } );
+						label( [ -8 + A, -17 + A / 2 ], A, 'left' );
+						label( [ -8 + A + E / 2, -17 + A ], E, 'above' );
+						label( [ -8 + A + E, -17 + A - D / 2 ], D, 'right' );
+						label( [ -8 + A / 2, -17 - 0.8 ], A );
+						label( [ -8 + A + B / 2, -17 - 0.8 ], B );
+						label( [ -8 + A + B + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D / 2, -17 - 0.8 ], D );
+						label( [ -8 + A + B + D + D + D + E / 2, -17 - 0.8 ], E );
+						label( [ -8 + A + B + 3 * D + E + 0.8, -17 - C / 2 ], C );
+						path( [ [ -8 + A, -17 ], [ -8 + A, -17 + A ], [ -8 + A + E, -17 + A ], [ -8 + A + E, -17 + A - D ], [ -8 + A + B, -17 + A - D ], [ -8 + A + B, -17 ] ], { stroke : "red", fill : "red", opacity : 0.65 } );
+						path( [ [ -8 + A, -17 - C ], [ -8 + A, -17 - C - A ], [ -8 + A + E, -17 - C - A ], [ -8 + A + E, -17 - C - A + D ], [ -8 + A + B, -17 - C - A + D ], [ -8 + A + B, -17 - C ], [ -8 + A, -17 - C ] ], { stroke : "red", fill : "red", opacity : 0.4 } );
+					</div>
+					<p>第一步:在展開圖中，圖形可分為兩個 <code>L</code> 型和一個長方形</p>
+					<p>第二步: 一個 <code>L</code> 型的面積為 <code><var>A</var> \times <var>B</var> - <var>D</var>\times <var>B - E</var>=<var>H</var></code></p>
+					<p>第三步:長方形的面積為 <code>( \qquad )</code></p>
+					<p>第四步:複合形體的表面積為 <code><var>H</var>\times 2+( \qquad )</code></p>
+				</div>
+			</div>	
+					
+           <div class="solution" data-type="multiple">
+			<span class="sol" data-forms="integer"><var>ANSWER</var></span>
+		</div>			
+           
+		   <div class="hints">
+				<p>長方形的面積為 <code>(<var>A</var>+<var>B</var>+<var>D</var>+<var>D</var>+<var>D</var>+<var>E</var>)\times<var>C</var>=<var>F</var>\times<var>C</var>=<var>G</var></code></p>
+				<p>複合形體的表面積為 <code><var>H</var>\times 2 + <var>G</var> = \color{#FF00AF}{<var>ANSWER</var>}</code></p>
+            </div>
+        </div>
+		
+	 </div>
+	 </div>
+	  
+</body>
+</html>
